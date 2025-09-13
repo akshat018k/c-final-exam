@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Shape {
+protected:
+    string color;
+
+public:
+    void setColor(string c) {
+        color = c;
+    }
+
+    string getColor() {
+        return color;
+    }
+
+    virtual void calculateArea() = 0;
+    virtual void display() = 0; // Virtual function for polymorphism
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+    double area;
+
+public:
+    Circle(double r) : radius(r), area(0) {}
+
+    void calculateArea() override {
+        area = M_PI * radius * radius;
+    }
+
+    void display() override {
+        calculateArea();
+        cout << "Circle [Color: " << color << ", Radius: " << radius
+             << ", Area: " << area << "]" << endl;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double length, width;
+    double area;
+
+public:
+    Rectangle(double l, double w) : length(l), width(w), area(0) {}
+
+    void calculateArea() override {
+        area = length * width;
+    }
+
+    void display() override {
+        calculateArea();
+        cout << "Rectangle [Color: " << color << ", Length: " << length
+             << ", Width: " << width << ", Area: " << area << "]" << endl;
+    }
+};
+
+int main() {
+    Shape* shapes[2];
+
+    shapes[0] = new Circle(4.0);
+    shapes[0]->setColor("Green");
+
+    shapes[1] = new Rectangle(5.0, 3.0);
+    shapes[1]->setColor("Yellow");
+
+    for (int i = 0; i < 2; ++i) {
+        shapes[i]->display();
+        delete shapes[i];
+    }
+
+    return 0;
+}
+
+
+
+
+
+"""
+Circle [Color: Green, Radius: 4, Area: 50.2655]
+Rectangle [Color: Yellow, Length: 5, Width: 3, Area: 15]
+"""
