@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+	private:
+		string name;
+		double salar;
+		string designation;
+		
+	public:
+		void setName(string n){
+			name =n;
+		}
+		
+		void setsalar(double s){
+			salar = s;
+		}
+		
+		void setdesignation(string d){
+			designation = d;
+		}
+		
+		string getName(){
+			return name;
+		}
+		
+		double getsalar(){
+			return salar;
+		}
+		
+		string getdesignation(){
+			return designation;
+		}
+};
+
+int main(){
+	
+	Employee emp;
+	emp.setName("jig woo");
+	emp.setsalar(55625);
+	emp.setdesignation("full steak devlopar");
+	
+	cout<<"Employee Name: "<<emp.getName()<<endl;
+	cout<<"Employee salary: "<<emp.getsalar()<<endl;
+	cout<<"Employee designation: "<<emp.getdesignation()<<endl;
+	
+	return 0;
+}
+
+
+"""
+Employee Name: jig woo
+Employee salary: 55625
+Employee designation: full steak devlopar
+"""
